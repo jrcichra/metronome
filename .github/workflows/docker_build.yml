@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build from source
+    - name: Build container
       run: |
-        sbt universal:packageBin
+          echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin 
+          docker build -t jrcichra/metronome .
+          docker push jrcichra/metronome
