@@ -3,4 +3,4 @@ WORKDIR /app
 COPY . .
 RUN sbt universal:packageBin
 RUN sbt stage
-ENTRYPOINT ./run.sh
+ENTRYPOINT /bin/bash ./run.sh
